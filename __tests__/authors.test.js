@@ -9,7 +9,7 @@ const app = require('../lib/app');
 /*
 [x]`POST /api/v1/authors` to create a new author
 [x]`GET /api/v1/authors/:id` to get an author by ID
-[]`GET /api/v1/authors` to get all authors
+[x`GET /api/v1/authors` to get all authors
 []`PATCH /api/v1/authors/:id` to update an author
 []`DELETE /api/v1/authors/:id` to delete an author
 
@@ -56,6 +56,20 @@ describe('author routes', () => {
       .get('/api/v1/authors')
       .then(res => {
         expect(res.body).toEqual(authors);
+      });
+  });
+
+  it('updates an author', async() => {
+    const author = await getAuthor();
+
+    return request(app)
+      .get(`/api/v1/authors/${author._id}`)
+      .send({ name: 'Janet Austin' })
+      .then(res => {
+        expect(res.body).toEqual({
+          ...author,
+          name: 'Janet Austin'
+        });
       });
   });
 });
