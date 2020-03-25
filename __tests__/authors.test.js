@@ -8,8 +8,8 @@ const app = require('../lib/app');
 
 /*
 [x]`POST /api/v1/authors` to create a new author
-[]`GET /api/v1/authors` to get all authors
 []`GET /api/v1/authors/:id` to get an author by ID
+[]`GET /api/v1/authors` to get all authors
 []`PATCH /api/v1/authors/:id` to update an author
 []`DELETE /api/v1/authors/:id` to delete an author
 
@@ -39,13 +39,10 @@ describe('author routes', () => {
 
   it('gets an author', async() => {
     const author = await getAuthor();
-    const books = await getBooks();
+    const books = await getBooks({ authorId: author._id });
 
     return request(app)
-      .post(`/api/v1/${author._id}`)
-      .send({
-        name: 'Fyodor Dostoyevski'
-      })
+      .get(`/api/v1/authors/${author._id}`)
       .then(res => {
         expect(res.body).toEqual({
           ...author,
