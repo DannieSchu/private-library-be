@@ -1,4 +1,4 @@
-const { getAuthor, getBooks } = require('../db/data-helpers');
+const { getAuthor, getAuthors, getBooks } = require('../db/data-helpers');
 
 const request = require('supertest');
 const app = require('../lib/app');
@@ -8,7 +8,7 @@ const app = require('../lib/app');
 
 /*
 [x]`POST /api/v1/authors` to create a new author
-[]`GET /api/v1/authors/:id` to get an author by ID
+[x]`GET /api/v1/authors/:id` to get an author by ID
 []`GET /api/v1/authors` to get all authors
 []`PATCH /api/v1/authors/:id` to update an author
 []`DELETE /api/v1/authors/:id` to delete an author
@@ -18,8 +18,6 @@ const app = require('../lib/app');
 []`PATCH /api/v1/books/:id` update a book
 []`DELETE /api/v1/books/:id` delete a book
 */
-
-
 
 describe('author routes', () => {
   it('creates an author', () => {
@@ -37,7 +35,7 @@ describe('author routes', () => {
       });
   });
 
-  it('gets an author', async() => {
+  it('gets an author and their books', async() => {
     const author = await getAuthor();
     const books = await getBooks({ authorId: author._id });
 
@@ -48,6 +46,16 @@ describe('author routes', () => {
           ...author,
           books        
         });
+      });
+  });
+
+  it('gets all authors', async() => {
+    const authors = await getAuthors();
+
+    return request(app)
+      .get('/api/v1/authors')
+      .then(res => {
+        expect(res.body).toEqual(authors);
       });
   });
 });
