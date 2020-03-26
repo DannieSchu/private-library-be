@@ -7,7 +7,7 @@ const app = require('../lib/app');
 [x]`POST /api/v1/books` create a new book
 [x]`GET /api/v1/books/:id` get a book by id and populate author
 [x]`PATCH /api/v1/books/:id` update a book
-[]`DELETE /api/v1/books/:id` delete a book
+[x]`DELETE /api/v1/books/:id` delete a book
 */
 
 describe('book routes', () => {
