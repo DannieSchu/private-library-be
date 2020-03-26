@@ -5,7 +5,7 @@ const app = require('../lib/app');
 
 /*
 [x]`POST /api/v1/books` create a new book
-[]`GET /api/v1/books/:id` get a book by id and populate author
+[x]`GET /api/v1/books/:id` get a book by id and populate author
 []`PATCH /api/v1/books/:id` update a book
 []`DELETE /api/v1/books/:id` delete a book
 */
@@ -45,6 +45,20 @@ describe('book routes', () => {
         expect(res.body).toEqual({
           ...book,
           authorId: author
+        });
+      });
+  });
+
+  it('updates a book genre', async() => {
+    const book = await getBook();
+
+    return request(app)
+      .patch(`/api/v1/books/${book._id}`)
+      .send({ genre: 'science fiction' })
+      .then(res => {
+        expect(res.body).toEqual({
+          ...book,
+          genre: 'science fiction'
         });
       });
   });
