@@ -3,14 +3,6 @@ const { getAuthor, getBook, getBooks } = require('../db/data-helpers');
 const request = require('supertest');
 const app = require('../lib/app');
 
-/*
-[x]`POST /api/v1/books` create a new book
-[x]`GET /api/v1/books` get all books
-[x]`GET /api/v1/books/:id` get a book by id and populate author
-[x]`PATCH /api/v1/books/:id` update a book
-[x]`DELETE /api/v1/books/:id` delete a book
-*/
-
 describe('book routes', () => {
   
   it('creates a book', async() => {

@@ -2,17 +2,6 @@ const { getAuthor, getAuthors, getBooks } = require('../db/data-helpers');
 
 const request = require('supertest');
 const app = require('../lib/app');
-// const connect = require('../lib/utils/connect');
-// const mongoose = require('mongoose');
-// const Author = require('../lib/models/Author');
-
-/*
-[x]`POST /api/v1/authors` to create a new author
-[x]`GET /api/v1/authors/:id` to get an author by ID
-[x`GET /api/v1/authors` to get all authors
-[x]`PATCH /api/v1/authors/:id` to update an author
-[x]`DELETE /api/v1/authors/:id` to delete an author
-*/
 
 describe('author routes', () => {
   it('creates an author', () => {

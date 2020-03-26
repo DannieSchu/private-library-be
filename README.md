@@ -1,47 +1,21 @@
-# LAB: Mongo Aggregations
+# Mongo Aggregations
 
-Create an app with all CRUD routes for a model.
+This is a book application with Book and Author models
+  * Static methods on models for aggregations:
+    * Top 3 authors with the most books
+    * Top 3 authors with the most written pages
 
-## Before you begin
+## Routes
+`POST /api/v1/authors` to create a new author
+`GET /most-books` to get the three authors with the most books
+`GET /api/v1/authors/:id` to get an author by ID
+`GET /api/v1/authors` to get all authors
+`PATCH /api/v1/authors/:id` to update an author
+`DELETE /api/v1/authors/:id` to delete an author
 
-Refer to *Getting Started*  in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for complete setup, configuration, deployment, and submission instructions.
-
-## Requirements
-
-### Write a seed data script
-
-Create a script that can seed your database. Use your script to seed
-your database before your tests.
-
-### Write CRUD routes for a model
-
-Create a model and all CRUD routes for the model
-
-### Create static methods for aggregations
-
-Write static methods on your model to run your aggregations
-
-### Create routes to get your aggregations
-
-## Example themes
-
-* workout application with Exercise model
-  * volume by day
-  * volume by exercise name
-* blog application with Post and Comment models
-  * top 10 post with most comments
-  * top 3 longest posts
-* book application with Book and Author
-  * top 3 authors with the most books
-  * top 3 authors with the most written pages
-
-## Rubric
-
-* Models 1 points
-* routes 2 points
-* seed data 3 points
-* aggregations 4 points
-
-## Assignment Submission Instructions
-
-Refer to the the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for the complete lab submission process and expectations
+`POST /api/v1/books` to create a new book
+`GET /most-pages` to get the ids for the three authors with the highest page counts
+`GET /api/v1/books` to get all books
+`GET /api/v1/books/:id` to get a book by id and populate author
+`PATCH /api/v1/books/:id` to update a book
+`DELETE /api/v1/books/:id` to delete a book
