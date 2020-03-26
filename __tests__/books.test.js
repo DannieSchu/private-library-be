@@ -22,7 +22,7 @@ describe('book routes', () => {
         authorId: author._id, 
         title: 'Mansfield Park',
         genre: 'literature',
-        length: 387
+        pages: 387
       })
       .then(res => {
         expect(res.body).toEqual({
@@ -30,7 +30,7 @@ describe('book routes', () => {
           authorId: author._id, 
           title: 'Mansfield Park',
           genre: 'literature',
-          length: 387,
+          pages: 387,
           __v: 0,
         });
       });
@@ -45,7 +45,7 @@ describe('book routes', () => {
         expect(res.body).toEqual(books);
       });
   });
-  
+
   it('gets a book by its id', async() => {
     const author = await getAuthor();
     const book = await getBook({ authorId: author._id });

@@ -12,6 +12,6 @@ module.exports = async({ authorsToCreate = 10, booksToCreate = 100 } = {}) => {
     authorId: chance.pickone(authors)._id,
     title: chance.sentence(),
     genre: chance.pickone(genre),
-    length: chance.integer({ min: 40, max: 700 })
+    pages: chance.integer({ min: 40, max: 700 })
   })));
 };
