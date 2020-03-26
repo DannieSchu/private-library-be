@@ -14,6 +14,7 @@ describe('book routes', () => {
   
   it('creates a book', async() => {
     const author = await getAuthor();
+    
     return request(app)
       .post('/api/v1/books')
       .send({
