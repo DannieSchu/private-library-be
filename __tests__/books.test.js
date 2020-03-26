@@ -44,7 +44,7 @@ describe('book routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           ...book,
-          authorId: author._id
+          authorId: author
         });
       });
   });
