@@ -11,12 +11,7 @@ const app = require('../lib/app');
 [x]`GET /api/v1/authors/:id` to get an author by ID
 [x`GET /api/v1/authors` to get all authors
 [x]`PATCH /api/v1/authors/:id` to update an author
-[]`DELETE /api/v1/authors/:id` to delete an author
-
-[]`POST /api/v1/books` create a new book
-[]`GET /api/v1/books/:id` get a book by id and populate tweet
-[]`PATCH /api/v1/books/:id` update a book
-[]`DELETE /api/v1/books/:id` delete a book
+[x]`DELETE /api/v1/authors/:id` to delete an author
 */
 
 describe('author routes', () => {
