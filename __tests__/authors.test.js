@@ -63,7 +63,7 @@ describe('author routes', () => {
     const author = await getAuthor();
 
     return request(app)
-      .get(`/api/v1/authors/${author._id}`)
+      .patch(`/api/v1/authors/${author._id}`)
       .send({ name: 'Janet Austin' })
       .then(res => {
         expect(res.body).toEqual({
