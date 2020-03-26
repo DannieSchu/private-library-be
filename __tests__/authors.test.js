@@ -10,7 +10,7 @@ const app = require('../lib/app');
 [x]`POST /api/v1/authors` to create a new author
 [x]`GET /api/v1/authors/:id` to get an author by ID
 [x`GET /api/v1/authors` to get all authors
-[]`PATCH /api/v1/authors/:id` to update an author
+[x]`PATCH /api/v1/authors/:id` to update an author
 []`DELETE /api/v1/authors/:id` to delete an author
 
 []`POST /api/v1/books` create a new book
@@ -70,6 +70,16 @@ describe('author routes', () => {
           ...author,
           name: 'Janet Austin'
         });
+      });
+  });
+
+  it('deletes an author', async() => {
+    const author = await getAuthor();
+
+    return request(app)
+      .delete(`/api/v1/authors/${author._id}`)
+      .then(res => {
+        expect(res.body).toEqual(author);
       });
   });
 });
