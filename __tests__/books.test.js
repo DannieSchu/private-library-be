@@ -1,4 +1,4 @@
-const { getAuthor, getBook, getBooks } = require('../db/data-helpers');
+const { getAuthor, getBook } = require('../db/data-helpers');
 
 const request = require('supertest');
 const app = require('../lib/app');
@@ -6,7 +6,7 @@ const app = require('../lib/app');
 /*
 [x]`POST /api/v1/books` create a new book
 [x]`GET /api/v1/books/:id` get a book by id and populate author
-[]`PATCH /api/v1/books/:id` update a book
+[x]`PATCH /api/v1/books/:id` update a book
 []`DELETE /api/v1/books/:id` delete a book
 */
 
@@ -60,6 +60,16 @@ describe('book routes', () => {
           ...book,
           genre: 'science fiction'
         });
+      });
+  });
+
+  it('deletes a book', async() => {
+    const book = await getBook();
+
+    return request(app)
+      .delete(`/api/v1/books/${book._id}`)
+      .then(res => {
+        expect(res.body).toEqual(book);
       });
   });
 });
