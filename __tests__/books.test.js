@@ -4,7 +4,6 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 describe('book routes', () => {
-  
   it('creates a book', async() => {
     const author = await getAuthor();
 
