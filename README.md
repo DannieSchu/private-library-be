@@ -20,5 +20,5 @@ This is a book application with Book and Author models
 `PATCH /api/v1/books/:id` to update a book<br>
 `DELETE /api/v1/books/:id` to delete a book<br>
 
-`POST /api/v1/comments` to create a new comment<br>
-`DELETE /api/v1/comments` to delete a comment<br>
+`POST /api/v1/notes` to create a new note<br>
+`DELETE /api/v1/notes` to delete a note<br>

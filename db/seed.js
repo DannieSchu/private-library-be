@@ -1,9 +1,9 @@
 const Book = require('../lib/models/Book');
 const Author = require('../lib/models/Author');
-const Comment = require('../lib/models/Comment');
+const Note = require('../lib/models/Note');
 const chance = require('chance').Chance();
 
-module.exports = async({ authorsToCreate = 10, booksToCreate = 100, commentsToCreate = 10 } = {}) => {
+module.exports = async({ authorsToCreate = 10, booksToCreate = 100, notesToCreate = 10 } = {}) => {
   const genre = ['literature', 'science fiction', 'horror', 'satire'];
   const authors = await Author.create([...Array(authorsToCreate)].map(() => ({
     name: chance.name()
@@ -16,7 +16,7 @@ module.exports = async({ authorsToCreate = 10, booksToCreate = 100, commentsToCr
     pages: chance.integer({ min: 40, max: 700 })
   })));
 
-  await Comment.create([...Array(commentsToCreate)].map(() => ({
+  await Note.create([...Array(notesToCreate)].map(() => ({
     comment: chance.sentence(),
     rating: chance.integer({ min: 0, max: 5 }),
     book: chance.pickone(books)._id

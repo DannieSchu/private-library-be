@@ -1,14 +1,14 @@
-const { getBook, getComment } = require('../db/data-helpers');
+const { getBook, getNote } = require('../db/data-helpers');
 
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('comment routes', () => {
-  it('creates a comment', async() => {
+describe('note routes', () => {
+  it('creates a note', async() => {
     const book = await getBook();
 
     return request(app)
-      .post('/api/v1/comments')
+      .post('/api/v1/notes')
       .send({
         comment: 'Some comment here',
         rating: 4,
@@ -25,13 +25,13 @@ describe('comment routes', () => {
       });
   });
 
-  it('deletes a comment', async() => {
-    const comment = await getComment();
+  it('deletes a note', async() => {
+    const note = await getNote();
 
     return request(app)
-      .delete(`/api/v1/comments/${comment._id}`)
+      .delete(`/api/v1/notes/${note._id}`)
       .then(res => {
-        expect(res.body).toEqual(comment);
+        expect(res.body).toEqual(note);
       });
   });
 });
