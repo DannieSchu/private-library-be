@@ -33,7 +33,10 @@ describe('book routes', () => {
     return request(app)
       .get('/api/v1/books')
       .then(res => {
-        expect(res.body).toEqual(books);
+        expect(res.body).toEqual(books.map(book => ({
+          ...book,
+          authorId: expect.any(Object)
+        })));
       });
   });
 
