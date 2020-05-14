@@ -1,4 +1,4 @@
-const { getAuthor, getBook, getBooks } = require('../db/data-helpers');
+const { getAuthor, getBook, getBooks, getComments } = require('../db/data-helpers');
 
 const request = require('supertest');
 const app = require('../lib/app');
@@ -40,12 +40,14 @@ describe('book routes', () => {
   it('gets a book by its id', async() => {
     const author = await getAuthor();
     const book = await getBook({ authorId: author._id });
+    const comments = await getComments({ book: book._id });
 
     return request(app)
       .get(`/api/v1/books/${book._id}`)
       .then(res => {
         expect(res.body).toEqual({
           ...book,
+          comments,
           authorId: author
         });
       });
